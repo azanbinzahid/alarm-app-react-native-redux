@@ -1,19 +1,30 @@
 import React, {Component} from 'react';
-import {Button, View, FlatList} from 'react-native';
+import {Button, StyleSheet, FlatList, View} from 'react-native';
 import {connect} from 'react-redux';
 import {ListItem} from 'react-native-elements';
+import {deleteAlarm} from '../actions/alarm';
 
 class ListAlarms extends Component {
   keyExtractor = (item, index) => index.toString();
 
   renderItem = ({item}) => (
-    <ListItem
-      title={item.time.toString()}
-      subtitle={item.date.toString()}
-      leftIcon={{name: 'alarm'}}
-      bottomDivider
-      //   chevron
-    />
+    <View style={styles.container}>
+      <ListItem
+        title={item.time.toString()}
+        subtitle={item.date.toString()}
+        leftIcon={{name: 'alarm'}}
+        bottomDivider
+        rightElement={
+          <Button
+            title="x"
+            color="red"
+            onPress={e => {
+              this.props.delete(item.value);
+            }}
+          />
+        }
+      />
+    </View>
   );
 
   render() {
@@ -27,6 +38,10 @@ class ListAlarms extends Component {
   }
 }
 
+const styles = StyleSheet.create({
+  container: {},
+});
+
 const mapStateToProps = state => {
   return {
     alarms: state.alarms.alarms,
@@ -34,7 +49,11 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    delete: value => {
+      dispatch(deleteAlarm(value));
+    },
+  };
 };
 
 // eslint-disable-next-line prettier/prettier
