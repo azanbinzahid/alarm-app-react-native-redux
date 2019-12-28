@@ -1,19 +1,19 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, Button} from 'react-native';
-import {connect} from 'react-redux';
-import {addAlarm} from './actions/alarm';
 import TimePicker from './components/TimePicker';
+import ListAlarms from './components/ListAlarms';
 
 class App extends Component {
-  state = {
-    time: '',
-  };
-
   render() {
-    console.log(this.props.alarms);
     return (
       <View style={styles.mainContainer}>
-        <TimePicker />
+        <View style={styles.listAlarms}>
+          <ListAlarms />
+        </View>
+
+        <View style={styles.timePicker}>
+          <TimePicker />
+        </View>
       </View>
     );
   }
@@ -21,23 +21,19 @@ class App extends Component {
 
 const styles = StyleSheet.create({
   mainContainer: {
-    padding: 10,
+    flex: 1,
+    alignItems: 'center',
+    // justifyContent: 'center',
+  },
+  timePicker: {
+    position: 'absolute',
+    bottom: '10%',
+    width: '80%',
+    // right: '10%',
+  },
+  listAlarms: {
+    width: '100%',
   },
 });
 
-const mapStateToProps = state => {
-  return {
-    alarms: state.alarms,
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    add: time => {
-      dispatch(addAlarm(time));
-    },
-  };
-};
-
-// eslint-disable-next-line prettier/prettier
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

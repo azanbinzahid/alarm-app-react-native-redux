@@ -30,7 +30,11 @@ class TimePicker extends Component {
   render() {
     return (
       <>
-        <Button title="Add Alarm" onPress={this.showDateTimePicker} />
+        <Button
+          fontSize="28"
+          title="Add Alarm"
+          onPress={this.showDateTimePicker}
+        />
         <DateTimePicker
           mode="datetime"
           isVisible={this.state.isDateTimePickerVisible}

@@ -1,4 +1,5 @@
 import {ADD_ALARM, DELETE_ALARM} from '../actions';
+import Moment from 'moment';
 
 const initialState = {
   alarms: [],
@@ -7,10 +8,19 @@ const initialState = {
 const alarmReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_ALARM:
-      console.log('time', action.payload);
+      Moment.locale('en');
+      console.log('time', state);
+      const time = Moment(action.payload).format('HH:mm');
+      const date = Moment(action.payload).format('d/M/YY');
+      console.log(time);
+      const alarm = {
+        value: action.payload,
+        time: time,
+        date: date,
+      };
       return {
         ...state,
-        alarms: state.alarms.concat(action.payload),
+        alarms: state.alarms.concat(alarm),
       };
 
     case DELETE_ALARM:
