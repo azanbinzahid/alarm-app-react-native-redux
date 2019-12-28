@@ -24,8 +24,12 @@ const alarmReducer = (state = initialState, action) => {
       };
 
     case DELETE_ALARM:
-      console.log('time', action.payload);
-      return state;
+      return {
+        ...state,
+        alarms: state.alarms.filter(v => {
+          return v.value !== action.payload;
+        }),
+      };
 
     default:
       return state;
