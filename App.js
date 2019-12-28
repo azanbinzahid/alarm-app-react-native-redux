@@ -2,25 +2,26 @@ import React, {Component} from 'react';
 import {StyleSheet, View, Button} from 'react-native';
 import {connect} from 'react-redux';
 import {addAlarm} from './actions/alarm';
+import TimePicker from './components/TimePicker';
 
 class App extends Component {
   state = {
     time: '',
-    alarms: [],
   };
 
   render() {
+    console.log(this.props.alarms);
     return (
-      <View>
-        <Button styles={styles.addButton} title="Add Alarm" />
+      <View style={styles.mainContainer}>
+        <TimePicker />
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  addButton: {
-    width: 100,
+  mainContainer: {
+    padding: 10,
   },
 });
 

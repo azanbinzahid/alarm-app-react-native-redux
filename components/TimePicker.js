@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import {Button, View, TimePickerAndroid} from 'react-native';
+import {Button} from 'react-native';
 import {connect} from 'react-redux';
 
-import {addAlarm} from './actions/alarm';
+import {addAlarm} from '../actions/alarm';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 
 class TimePicker extends Component {
@@ -23,14 +23,16 @@ class TimePicker extends Component {
 
   handleDatePicked = date => {
     console.log('A date has been picked: ', date);
+    this.props.add(date);
     this.hideDateTimePicker();
   };
 
   render() {
     return (
       <>
-        <Button title="Show DatePicker" onPress={this.showDateTimePicker} />
+        <Button title="Add Alarm" onPress={this.showDateTimePicker} />
         <DateTimePicker
+          mode="datetime"
           isVisible={this.state.isDateTimePickerVisible}
           onConfirm={this.handleDatePicked}
           onCancel={this.hideDateTimePicker}
