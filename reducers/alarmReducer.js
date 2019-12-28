@@ -8,7 +8,10 @@ const alarmReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_ALARM:
       console.log('time', action.payload);
-      return state;
+      return {
+        ...state,
+        alarms: state.alarms.concat(action.payload),
+      };
 
     case DELETE_ALARM:
       console.log('time', action.payload);
