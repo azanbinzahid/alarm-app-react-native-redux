@@ -11,7 +11,7 @@ const alarmReducer = (state = initialState, action) => {
       Moment.locale('en');
       console.log('time', state);
       const payload = action.payload;
-      const time = Moment(payload.data.value).format('HH:mm');
+      const time = Moment(payload.data.value).format('hh:mm A');
       const date = Moment(payload.data.value).format('d/M/YY');
       console.log(time);
       const alarm = {

@@ -27,7 +27,8 @@ const styles = StyleSheet.create({
     // justifyContent: 'center',
   },
   heading: {
-    fontSize: 20,
+    // fontWeight: "bold",
+    fontSize: 25,
     padding: 20,
   },
   timePicker: {

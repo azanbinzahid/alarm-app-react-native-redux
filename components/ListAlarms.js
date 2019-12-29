@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Button, StyleSheet, FlatList, View} from 'react-native';
 import {connect} from 'react-redux';
-import {ListItem} from 'react-native-elements';
+import {ListItem, Icon} from 'react-native-elements';
 import {deleteAlarm} from '../actions/alarm';
 import ReactNativeAN from 'react-native-alarm-notification';
 
@@ -12,12 +12,13 @@ class ListAlarms extends Component {
     <View style={styles.container}>
       <ListItem
         title={item.time.toString()}
+        titleStyle={styles.titleStyle}
         subtitle={item.date.toString()}
-        leftIcon={{name: 'alarm'}}
+        // leftIcon={{name: 'alarm'}}
         bottomDivider
         rightElement={
           <Button
-            title="x"
+            title="Remove"
             color="red"
             onPress={e => {
               ReactNativeAN.deleteAlarm(item.alarmNotifData.id);
@@ -27,6 +28,7 @@ class ListAlarms extends Component {
             }}
           />
         }
+        // leftElement={<Icon name="alarm" />}
       />
     </View>
   );
@@ -44,6 +46,7 @@ class ListAlarms extends Component {
 
 const styles = StyleSheet.create({
   container: {},
+  titleStyle: {fontWeight: 'bold', fontSize: 30},
 });
 
 const mapStateToProps = state => {

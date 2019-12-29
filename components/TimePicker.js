@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button, DeviceEventEmitter, Alert} from 'react-native';
+import {Button, StyleSheet, Alert} from 'react-native';
 import {connect} from 'react-redux';
 import ReactNativeAN from 'react-native-alarm-notification';
 import {addAlarm} from '../actions/alarm';
@@ -75,11 +75,7 @@ class TimePicker extends Component {
   render() {
     return (
       <>
-        <Button
-          fontSize="28"
-          title="Add Alarm"
-          onPress={this.showDateTimePicker}
-        />
+        <Button title="+ Add Alarm" onPress={this.showDateTimePicker} />
         <DateTimePicker
           mode="datetime"
           isVisible={this.state.isDateTimePickerVisible}
