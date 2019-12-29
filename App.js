@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Button, Text, ScrollView} from 'react-native';
+import {StyleSheet, View, Button, Text, SafeAreaView} from 'react-native';
 import TimePicker from './components/TimePicker';
 import ListAlarms from './components/ListAlarms';
 
@@ -8,10 +8,9 @@ class App extends Component {
     return (
       <View style={styles.mainContainer}>
         <Text style={styles.heading}> Alarm App </Text>
-
-        <ScrollView style={styles.listAlarms}>
+        <SafeAreaView style={styles.listAlarms}>
           <ListAlarms />
-        </ScrollView>
+        </SafeAreaView>
 
         <View style={styles.timePicker}>
           <TimePicker />
@@ -23,7 +22,7 @@ class App extends Component {
 
 const styles = StyleSheet.create({
   mainContainer: {
-    flex: 2,
+    flex: 1,
     alignItems: 'center',
     // justifyContent: 'center',
   },
@@ -38,6 +37,7 @@ const styles = StyleSheet.create({
     bottom: 20,
   },
   listAlarms: {
+    flex: 1,
     width: '100%',
   },
 });

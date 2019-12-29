@@ -4,8 +4,12 @@ import android.app.Application;
 import android.content.Context;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
-import com.emekalites.react.alarm.notification.ANPackage;
 import com.facebook.react.ReactNativeHost;
+import android.app.NotificationManager;
+import android.app.NotificationChannel;
+import android.content.Context;
+import android.graphics.Color;
+import android.os.Build;
 import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
 import java.lang.reflect.InvocationTargetException;
@@ -45,9 +49,9 @@ public class MainApplication extends Application implements ReactApplication {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
     initializeFlipper(this); // Remove this line if you don't want Flipper enabled
-    String id = "my_channel_id";					// The id of the channel. 
-    CharSequence name = "my_channel_name";			// The user-visible name of the channel. 
-    String description = "my_channel_description";	// The user-visible description of the channel. 
+    String id = "alarm-channel";					// The id of the channel. 
+    CharSequence name = "alarm-channel";			// The user-visible name of the channel. 
+    String description = "channel for redux alarm app";	// The user-visible description of the channel. 
  
     if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
       NotificationChannel mChannel = new NotificationChannel(id, name, NotificationManager.IMPORTANCE_DEFAULT);
