@@ -35,7 +35,7 @@ class TimePicker extends Component {
   handleDatePicked = datetime => {
     var currentTime = Date.now();
     if (datetime.getTime() < currentTime) {
-      Alert.alert('please choose correct time');
+      Alert.alert('please choose future time');
       this.hideDateTimePicker();
 
       return;
