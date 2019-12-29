@@ -3,6 +3,7 @@ import {Button, StyleSheet, FlatList, View} from 'react-native';
 import {connect} from 'react-redux';
 import {ListItem} from 'react-native-elements';
 import {deleteAlarm} from '../actions/alarm';
+import ReactNativeAN from 'react-native-alarm-notification';
 
 class ListAlarms extends Component {
   keyExtractor = (item, index) => index.toString();
@@ -19,6 +20,9 @@ class ListAlarms extends Component {
             title="x"
             color="red"
             onPress={e => {
+              ReactNativeAN.deleteAlarm(item.alarmNotifData.id);
+              ReactNativeAN.stopAlarm();
+
               this.props.delete(item.value);
             }}
           />
