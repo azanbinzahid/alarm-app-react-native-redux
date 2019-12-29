@@ -10,11 +10,13 @@ const alarmReducer = (state = initialState, action) => {
     case ADD_ALARM:
       Moment.locale('en');
       console.log('time', state);
-      const time = Moment(action.payload).format('HH:mm');
-      const date = Moment(action.payload).format('d/M/YY');
+      const payload = action.payload;
+      const time = Moment(payload.data.value).format('hh:mm A');
+      const date = Moment(payload.data.value).format('d/M/YY');
       console.log(time);
       const alarm = {
-        value: action.payload,
+        alarmNotifData: payload,
+        value: payload.data.value,
         time: time,
         date: date,
       };
